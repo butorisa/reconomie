@@ -42,26 +42,26 @@ export const authorizeUser = async(userId: string, password: string, onSuccess: 
     );
 
     // ③ cognitoユーザー認証
-    // await cognitoUser.authenticateUser(authenticationDetails, {
-    //     // 認証OK
-    //     onSuccess: function () {
-    //         onSuccess();
-    //     },
-    //     // 初回ログイン時は初期パスワードでログインさせる
-    //     newPasswordRequired: function (userAttributes: any) {
-    //         delete userAttributes.email_verified;
-    //         cognitoUser.completeNewPasswordChallenge(password, {}, {
-    //             onSuccess: function () { },
-    //             onFailure: function () { },
-    //         });
-    //         onChangePassword();
-    //     },
-    //     // 認証NG
-    //     onFailure: function (error: any) {
-    //         console.error(error);
-    //         onFailure();
-    //     },
-    // });
+    await cognitoUser.authenticateUser(authenticationDetails, {
+        // 認証OK
+        onSuccess: function () {
+            onSuccess();
+        },
+        // 初回ログイン時は初期パスワードでログインさせる
+        newPasswordRequired: function (userAttributes: any) {
+            delete userAttributes.email_verified;
+            cognitoUser.completeNewPasswordChallenge(password, {}, {
+                onSuccess: function () { },
+                onFailure: function () { },
+            });
+            onChangePassword();
+        },
+        // 認証NG
+        onFailure: function (error: any) {
+            console.error(error);
+            onFailure();
+        },
+    });
 }
 
 /**

@@ -10,9 +10,9 @@ const assert = require('assert');
     await page.goto('http://localhost:3000');
     // IDパスワードを入力
     const userId = await page.$('#loginId');
-    await userId.type('buto.risa');
+    await userId.type('xxxxx');
     const password = await page.$('#password');
-    await password.type('Poyo!0423');
+    await password.type('xxxxxx');
     // ログイン
     const loginButton = await page.$('#loginButton');
     await loginButton.click();

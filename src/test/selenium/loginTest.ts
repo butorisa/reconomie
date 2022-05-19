@@ -20,9 +20,9 @@ capabilities.set('chromeOptions', {
     await driver.get("http://localhost:3000");
     // IDパスワードを入力
     let userId = await driver.findElement(By.id('loginId'));
-    userId.sendKeys("buto.risa");
+    userId.sendKeys("xxxxx");
     let password = await driver.findElement(By.id('password'));
-    password.sendKeys("Poyo!0423");
+    password.sendKeys("xxxxx");
     // ログイン
     let loginButton = await driver.findElement(By.id('loginButton'));
     loginButton.click();
