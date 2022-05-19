@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './main/scss/common.scss';
 import Login from './main/pages/Login';
 import Payment from './main/pages/Payment';
 

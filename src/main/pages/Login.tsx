@@ -61,20 +61,26 @@ const Login = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className='modal'>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Box className="modal">
+                    <Typography id="modal-modal-title" variant="h6" component="h2" mb={2}>
                         please change your password
                     </Typography>
-                    <FormControl fullWidth>
-                        <OutlinedInput type="password" value={newPassword} placeholder="new password" onChange={e => setNewPassword(e.target.value)} />
-                    </FormControl>
-                    <Button variant="contained"
-                        onClick={() => {
-                            changeUserPassword();
-                            isModalShow(false);
-                        }}>
-                        change password
-                    </Button>
+                    <Grid container rowSpacing={2} justifyContent="center" alignItems="center">
+                        <Grid item xs={12}>
+                            <FormControl fullWidth>
+                                <OutlinedInput type="password" value={newPassword} placeholder="new password" onChange={e => setNewPassword(e.target.value)} />
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Button variant="contained"
+                                onClick={() => {
+                                    changeUserPassword();
+                                    isModalShow(false);
+                                }}>
+                                change password
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </Box>
             </Modal>
         </Grid>
