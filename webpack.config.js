@@ -2,9 +2,6 @@ const path = require('path');
 var webpack = require('webpack');
 const env = require('node-env-file');
 
-// ① 環境変数の読み込み
-env('../../../reconomie/local.env');
-
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
@@ -43,11 +40,12 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
+    fallback: { 
+      "process": false 
+    }
   },
   plugins : [
     new webpack.DefinePlugin({
-      "USER_POOL_ID": JSON.stringify(process.env.USER_POOL_ID),
-      "CLIENT_ID": JSON.stringify(process.env.CLIENT_ID),
     })
   ],
   target: ["web", "es5"],

@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "serve": "webpack serve",
+        "serve": "node ./src/setEnv.js & webpack serve",
         "build": "webpack",
         "watch": "webpack -w",
         "test": "yarn node --loader ts-node/esm src/test/testBase.ts",
@@ -12,6 +12,7 @@
         "@babel/plugin-syntax-jsx": "^7.16.7",
         "@babel/preset-env": "^7.17.10",
         "@babel/preset-react": "^7.16.7",
+        "@types/node": "^17.0.36",
         "@types/react": "^18.0.8",
         "@types/react-dom": "^18.0.3",
         "babel-loader": "^8.2.5",
@@ -30,7 +31,9 @@
         "@emotion/styled": "^11.8.1",
         "@mui/material": "^5.6.3",
         "amazon-cognito-identity-js": "^5.2.8",
+        "aws-sdk": "^2.1142.0",
         "node-env-file": "^0.1.8",
+        "process": "^0.11.10",
         "puppeteer": "^13.7.0",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",

@@ -1,14 +1,16 @@
+import { env } from 'process';
+
 /**
  * ユーザー認証util
  */
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
-declare var USER_POOL_ID: string;
-declare var CLIENT_ID: string;
+// declare var USER_POOL_ID: string;
+// declare var CLIENT_ID: string;
 
 /* cognito ユーザープール情報 */
 const poolData = {
-    UserPoolId: USER_POOL_ID,
-    ClientId: CLIENT_ID
+    UserPoolId: env.USER_POOL_ID,
+    ClientId: env.CLIENT_ID
 };
 /* ユーザー情報 */
 let cognitoUser: any;
@@ -27,7 +29,8 @@ type AuthorizationResponse = {
  * @param onFailure 
  * @param onChangePassword 
  */
-export const authorizeUser = async(userId: string, password: string, onSuccess: any, onFailure: any, onChangePassword: any) => {
+export const authorizeUser = async (userId: string, password: string, onSuccess: any, onFailure: any, onChangePassword: any) => {
+    console.log(poolData);
     cognitoUser = new AmazonCognitoIdentity.CognitoUser(
         {
             Username: userId,
@@ -41,7 +44,7 @@ export const authorizeUser = async(userId: string, password: string, onSuccess: 
         }
     );
 
-    // ③ cognitoユーザー認証
+    // cognitoユーザー認証
     await cognitoUser.authenticateUser(authenticationDetails, {
         // 認証OK
         onSuccess: function () {
@@ -70,10 +73,10 @@ export const authorizeUser = async(userId: string, password: string, onSuccess: 
  * @param newPassword 
  * @param onChangePassword
  */
-export const changePassword = async(oldPassword: string, newPassword: string, onChangePassword: any) => {
+export const changePassword = async (oldPassword: string, newPassword: string, onChangePassword: any) => {
     await cognitoUser.changePassword(oldPassword, newPassword, {
-        onSuccess: function () {},
-        onFailure: function () {}
+        onSuccess: function () { },
+        onFailure: function () { }
     });
     onChangePassword();
 }

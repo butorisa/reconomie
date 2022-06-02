@@ -18,7 +18,7 @@ const Login = () => {
      * ログイン
      */
     const loginUser = async () => {
-        // ② cognitoログイン処理の呼び出し
+        // cognitoログイン処理の呼び出し
         await authorizeUser(loginId, password, () => { navigate("/payment") },
             () => { alert("invalid id/password") }, () => { isModalShow(true) });
 
